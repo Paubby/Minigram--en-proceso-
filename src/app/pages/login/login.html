@@ -1,0 +1,31 @@
+<mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="pat@example.com" (input)="updateUsername($event)"/>
+            @for (error of email().errors(); track error) {
+            <mat-error>{{ error.message }}</mat-error>
+            }
+        </mat-form-field>
+    </div>
+
+
+    <div class="example-container">
+        <mat-form-field>
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" (input)="updatePassword($event)" />
+            <button matIconButton matSuffix (click)="clickEvent($event)"[attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()" >
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+    </div>
+</mat-grid-tile>
+    
+    <mat-grid-tile>
+        <button mat-raised-button color="primary" (click)="login()">Login</button>
+    </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,18 @@
+
+<mat-card class="example-card" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{ post()?.username }}</mat-card-title>
+    <mat-card-subtitle>{{ post()?.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="http://localhost:3000/uploads/{{post()?.image_filename}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+        {{ post()?.caption }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button matButton><mat-icon>favorite_border</mat-icon></button>
+    <button matButton><mat-icon>favorite</mat-icon></button>
+  </mat-card-actions>
+</mat-card>
