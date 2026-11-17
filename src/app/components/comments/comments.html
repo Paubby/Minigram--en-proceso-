@@ -1,0 +1,31 @@
+<ul class="comment-list">
+  @for (comment of comments().comments; track comment.id) {
+  <li class="comment-item">
+    <div class="comment-head">
+      @if (comment.avatar_filename) {
+      <img class="comment-avatar" src="http://localhost:3000/uploads/{{ comment.avatar_filename }}"
+        alt="Avatar de {{ comment.username }}" />
+      } @else {
+      <span class="comment-avatar comment-avatar-placeholder" aria-hidden="true">
+        {{ comment.username.charAt(0).toUpperCase() }}
+      </span>
+      }
+      <span class="comment-username">{{ comment.username }}</span>
+
+      @if (comment.isOwner) {
+      <button mat-icon-button class="comment-delete" type="button" (click)="deleteComment(comment.id)"
+        [attr.aria-label]="'Borrar comentario de ' + comment.username">
+        <mat-icon>delete</mat-icon>
+      </button>
+      }
+    </div>
+    <p class="comment-content">{{ comment.content }}</p>
+  </li>
+  }
+</ul>
+
+<div class="comment-form">
+  <input class="comment-input" type="text" placeholder="Escribe un comentario…" aria-label="Escribe un comentario"
+    (input)="updateComment($event)" (keyup.enter)="createComment()" />
+  <button mat-flat-button color="primary" class="comment-submit" type="button" (click)="createComment()">Publicar</button>
+</div>

@@ -1,4 +1,37 @@
-#centrarDiv {
-    display: flex;
-    align-items: center;
+:host {
+  display: block;
+}
+
+/* Contenedor del feed.
+   OJO: el HTML usa class="centrarDiv", así que el selector es . y no # */
+.centrarDiv {
+  width: min(640px, 100%);
+  margin: 0 auto;
+  padding: 40px 16px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+.centrarDiv h1 {
+  margin: 32px 0 0;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  text-align: center;
+  color: var(--primary-strong);
+}
+
+.centrarDiv > p {
+  margin: -12px 0 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+app-post {
+  display: block;
+  width: 100%;
 }

@@ -5,10 +5,13 @@
 
   <span class="example-spacer"></span>
 
-  <a mat-button routerLink="/">Home</a>
+  @if (this.restApiService.isLoggedIn() == true) {
+   <a mat-button routerLink="/">Home</a>
+  <a mat-button (click)="logout()">LogOut</a> 
+  }@else{
   <a mat-button routerLink="/login">Login</a>
   <a mat-button routerLink="/register">Registro</a>
-  <a mat-button>About</a>
+  }
 </mat-toolbar>
 
 </main>

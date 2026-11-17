@@ -1,31 +1,25 @@
-<mat-grid-list cols="3" rowHeight="2:1">
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
+<div class="login-card">
+  <h1 class="login-title">Minigram</h1>
+  <p class="login-subtitle">Inicia sesión para continuar</p>
 
-    <div class="example-container">
-        <mat-form-field>
-            <mat-label>Enter your email</mat-label>
-            <input matInput placeholder="pat@example.com" (input)="updateUsername($event)"/>
-            @for (error of email().errors(); track error) {
-            <mat-error>{{ error.message }}</mat-error>
-            }
-        </mat-form-field>
-    </div>
+  <mat-form-field appearance="outline">
+    <mat-label>Usuario o email</mat-label>
+    <input matInput placeholder="pat@example.com" (input)="updateUsername($event)" />
+    @for (error of email().errors(); track error) {
+    <mat-error>{{ error.message }}</mat-error>
+    }
+  </mat-form-field>
 
+  <mat-form-field appearance="outline">
+    <mat-label>Contraseña</mat-label>
+    <input matInput [type]="hide() ? 'password' : 'text'" (input)="updatePassword($event)" />
+    <button matIconButton matSuffix type="button" (click)="clickEvent($event)"
+      [attr.aria-label]="hide() ? 'Mostrar contraseña' : 'Ocultar contraseña'" [attr.aria-pressed]="hide()">
+      <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </button>
+  </mat-form-field>
 
-    <div class="example-container">
-        <mat-form-field>
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide() ? 'password' : 'text'" (input)="updatePassword($event)" />
-            <button matIconButton matSuffix (click)="clickEvent($event)"[attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide()" >
-                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-        </mat-form-field>
-    </div>
-</mat-grid-tile>
-    
-    <mat-grid-tile>
-        <button mat-raised-button color="primary" (click)="login()">Login</button>
-    </mat-grid-tile>
-</mat-grid-list>
+  <button mat-flat-button color="primary" class="login-button" type="button" (click)="login()">
+    Entrar
+  </button>
+</div>

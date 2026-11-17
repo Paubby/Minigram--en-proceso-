@@ -1,6 +1,11 @@
-
+<!-- ns si es aixi o al reves -->
 <div class="centrarDiv">
+    @if(this.api.isLoggedIn() == false){
+        <h1>Bienvenido a Minigram</h1>
+        <p>Por favor, inicia sesión o regístrate para continuar.</p>
+    }
     @for(post of posts(); track post.id){
-        <app-post [post]="post"></app-post>
+        <app-post [post]="post">
+        </app-post>
     } 
 </div>

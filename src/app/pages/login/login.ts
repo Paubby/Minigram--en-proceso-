@@ -1,14 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
-import { MatGridListModule } from '@angular/material/grid-list';
 import { email, form, FormField, required } from '@angular/forms/signals';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { RestApiService } from '../../services/rest-api.service';
+import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 
 @Component({
-  imports: [MatIconModule, MatButtonModule, MatGridListModule, MatFormFieldModule, MatInputModule, FormField],
+  imports: [MatIconModule, MatButtonModule, MatFormFieldModule, MatInputModule, FormField],
   selector: 'app-login',
   styleUrl: './login.css',
   templateUrl: './login.html',
@@ -40,9 +40,15 @@ export class Login {
     event.stopPropagation();
   }
 
-  login() {
-    console.log('Username:', this.username());
-    console.log('Password:', this.password());
-    this.api.login(this.username(), this.password())
+  async login() {
+    try {
+      const result = await firstValueFrom(
+        this.api.login(this.username(), this.password())
+      );
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+    
+    // console.log()
   }
 }

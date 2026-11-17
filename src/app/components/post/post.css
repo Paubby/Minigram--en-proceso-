@@ -1,9 +1,74 @@
+:host {
+  display: block;
+}
+
 .example-card {
-  max-width: 400px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+}
+
+/* --- Cabecera --- */
+mat-card-header {
+  padding: 16px 16px 0;
 }
 
 .example-header-image {
-  background-image: url('https://material.angular.dev/assets/img/examples/shiba1.jpg');
+  background-image: linear-gradient(135deg, #00acc1 0%, #006064 100%);
   background-size: cover;
+  background-position: center;
+  border-radius: 50%;
 }
 
+mat-card-title {
+  font-weight: 600;
+  color: var(--text);
+}
+
+mat-card-subtitle {
+  color: var(--text-muted);
+}
+
+/* --- Imagen del post --- */
+.example-card img[mat-card-image] {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin: 0;
+}
+
+/* --- Texto --- */
+mat-card-content {
+  padding-top: 12px;
+}
+
+mat-card-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* --- Botones de "me gusta" --- */
+mat-card-actions {
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 6px 8px;
+  border-top: 1px solid var(--surface-2);
+}
+
+mat-card-actions button[mat-button] {
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  padding-inline: 12px;
+}
+
+mat-card-actions button[mat-button]:hover {
+  background-color: var(--primary-soft);
+  color: var(--primary-strong);
+}

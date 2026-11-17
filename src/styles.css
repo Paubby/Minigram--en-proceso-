@@ -1,1 +1,97 @@
-/* You can add global styles to this file, and also import other style files */
+/* =========================================================
+   Minigram — Estilos globales
+   Paleta cian (coincide con material-theme.scss)
+   Contrastes verificados WCAG AA (>= 4.5:1 para texto normal)
+   ========================================================= */
+
+:root {
+  /* Superficies */
+  --bg: #eef1f5;
+  --surface: #ffffff;
+  --surface-2: #f6f8fb;
+  --border: #e3e8ef;
+  --border-strong: #c9d2de;
+
+  /* Texto */
+  --text: #14181d;          /* 17.8:1 sobre blanco */
+  --text-muted: #566072;    /*  6.3:1 sobre blanco */
+
+  /* Acentos */
+  --primary: #00838f;       /*  4.6:1 sobre blanco */
+  --primary-strong: #006064;/*  7.4:1 sobre blanco */
+  --primary-soft: #e0f4f7;
+  --danger: #c62828;        /*  5.6:1 sobre blanco */
+
+  /* Formas */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+
+  /* Sombras */
+  --shadow-1: 0 1px 2px rgba(16, 24, 40, 0.06), 0 8px 24px rgba(16, 24, 40, 0.06);
+  --shadow-2: 0 4px 12px rgba(16, 24, 40, 0.08), 0 16px 40px rgba(16, 24, 40, 0.1);
+  --ring: 0 0 0 3px #ffffff, 0 0 0 5px var(--primary-strong);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: radial-gradient(
+    900px 480px at 50% -160px,
+    #d6eef3 0%,
+    rgba(214, 238, 243, 0) 70%
+  );
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* --- Accesibilidad: foco visible (WCAG 2.4.7) --- */
+:focus-visible {
+  outline: 3px solid var(--primary-strong);
+  outline-offset: 2px;
+}
+
+/* --- Accesibilidad: respetar movimiento reducido (WCAG 2.3.3) --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Barra de desplazamiento --- */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #c3ccd8;
+  border-radius: var(--radius-pill);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a6b2c2;
+  background-clip: padding-box;
+}
