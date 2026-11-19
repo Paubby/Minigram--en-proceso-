@@ -1,19 +1,35 @@
 <mat-card class="example-card" appearance="outlined">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    @if (post()?.avatar_filename) {
+    <img mat-card-avatar class="example-header-image"
+      src="http://localhost:3000/uploads/{{ post()?.avatar_filename }}"
+      alt="Avatar de {{ post()?.username }}" />
+    } @else {
+    <div mat-card-avatar class="example-header-image" aria-hidden="true">
+      {{ (post()?.username ?? '').charAt(0).toUpperCase() }}
+    </div>
+    }
     <mat-card-title>{{ post()?.username }}</mat-card-title>
     <mat-card-subtitle>{{ post()?.id }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="http://localhost:3000/uploads/{{post()?.image_filename}}"
+
+  <img mat-card-image src="http://localhost:3000/uploads/{{ post()?.image_filename }}"
     [alt]="'Imagen publicada por ' + (post()?.username ?? '')">
+
   <mat-card-content>
     <p>
       {{ post()?.caption }}
     </p>
   </mat-card-content>
+
   <mat-card-actions>
-    <button mat-button type="button" aria-label="Me gusta"><mat-icon>favorite_border</mat-icon></button>
-    <button mat-button type="button" aria-label="Ya no me gusta"><mat-icon>favorite</mat-icon></button>
+    <button mat-button type="button" class="like-button" (click)="toggleLike()"
+      [attr.aria-label]="liked() ? 'Ya no me gusta' : 'Me gusta'"
+      [attr.aria-pressed]="liked()">
+      <mat-icon>{{ liked() ? 'favorite' : 'favorite_border' }}</mat-icon>
+      <span class="like-count">{{ likeCount() }}</span>
+    </button>
   </mat-card-actions>
+
   <app-comments [postId]="post()?.id"></app-comments>
 </mat-card>

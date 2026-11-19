@@ -22,6 +22,7 @@ mat-card-header {
   background-size: cover;
   background-position: center;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 mat-card-title {
@@ -71,4 +72,15 @@ mat-card-actions button[mat-button] {
 mat-card-actions button[mat-button]:hover {
   background-color: var(--primary-soft);
   color: var(--primary-strong);
+}
+
+/* Rosa cuando el like está dado — gana al hover y a Material */
+mat-card-actions button.like-button[aria-pressed='true'],
+mat-card-actions button.like-button[aria-pressed='true']:hover {
+  color: #c2185b;
+}
+
+.like-count {
+  margin-left: 4px;
+  font-variant-numeric: tabular-nums;
 }

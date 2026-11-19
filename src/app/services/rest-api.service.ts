@@ -62,5 +62,15 @@ export class RestApiService {
         return this.http.delete<any>(this.apiURL + `comment/delete/${commentId}`, { headers: { 'Authorization': `Bearer ${localStorage.getItem(this.jwtTokenKey)}` } });
     }
 
-    
+    countLikes(postId: number): Observable<any> {
+        return this.http.get<any>(this.apiURL + `like/count/${postId}`, { headers: { 'Authorization': `Bearer ${localStorage.getItem(this.jwtTokenKey)}` } });
+    }
+
+    doILike(postId: number): Observable<any> {
+        return this.http.get<any>(this.apiURL + `like/doILike/${postId}`, { headers: { 'Authorization': `Bearer ${localStorage.getItem(this.jwtTokenKey)}` } });
+    }
+
+    switchLike(postId: number): Observable<any> {
+        return this.http.post<any>(this.apiURL + `like/switch-like/${postId}`, {}, { headers: { 'Authorization': `Bearer ${localStorage.getItem(this.jwtTokenKey)}` } });
+    }
 }
